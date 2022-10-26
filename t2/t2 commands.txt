@@ -1,0 +1,17 @@
+(base) D:\BigData_made\HW1> sudo docker exec -it namenode bash
+root@7f96f6110c51:/# hdfs dfs -mkdir /my_dir
+root@7f96f6110c51:/# hdfs dfs -mkdir /my_dir/another_dir
+root@7f96f6110c51:/# hdfs dfs -touchz /my_dir/another_dir/emptyfile
+root@7f96f6110c51:/# hdfs dfs -rm -r /my_dir
+(base) D:\BigData_made\HW1> sudo docker cp testfile.txt namenode:/
+(base) D:\BigData_made\HW1> sudo docker exec -it namenode bash
+root@7f96f6110c51:/# hdfs dfs -copyFromLocal testfile.txt /
+root@7f96f6110c51:/# hdfs dfs -head /testfile.txt
+root@7f96f6110c51:/# hdfs dfs -tail /testfile.txt
+root@7f96f6110c51:/# hdfs dfs -cat /testfile.txt
+root@7f96f6110c51:/# hdfs dfs -mkdir /dir/
+root@7f96f6110c51:/# hdfs dfs -cp /testfile.txt /dir/
+root@7f96f6110c51:/# hdfs dfs -setrep 2 /dir/testfile.txt
+root@7f96f6110c51:/# hdfs fsck  /dir/testfile.txt -files -blocks -locations
+root@7f96f6110c51:/# hdfs fsck -blockId blk_1073741877_1053.meta
+
